@@ -4,9 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.epam.dtos.ProductBean;
 import com.epam.dtos.ProductDTO;
 import com.epam.exception.ProductException;
 import com.epam.model.Product;
@@ -24,7 +28,7 @@ public class ProductServiceImpl implements ProductService {
 	ProductConversionUtil productConversionUtil;
 
 	@Override
-	public ProductDTO saveProduct(Product p) {
+	public ProductDTO saveProduct(Product p) throws ProductException {
 		Product product = productRepository.save(p);
 		return productConversionUtil.convertToDTO(product);
 	}
@@ -43,6 +47,18 @@ public class ProductServiceImpl implements ProductService {
 			throw new ProductException("Not found productId");
 		}
 		return product.get();
+	}
+
+	@Override
+	public void deleteProductById(@Min(2) Long productId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Product updateProducts(@Valid ProductBean product) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

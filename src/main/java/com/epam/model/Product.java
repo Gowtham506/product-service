@@ -8,10 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.Data;
-
 @Entity
-@Data
 @Table(name = "products")
 public class Product implements Serializable {
 
@@ -27,9 +24,40 @@ public class Product implements Serializable {
 
 	@Column(name = "product_price", nullable = false)
 	private float price;
-	
-	@Column(name="product_type", nullable=false)
+
+	@Column(name = "product_type", nullable = false)
 	private String productType;
-	
+
+	public Long getProductId() {
+		return productId;
+	}
+
+	public void setProductId(Long productId) {
+		this.productId = productId;
+	}
+
+	public String getProductName() {
+		return productName;
+	}
+
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
+
+	public String getProductType() {
+		return productType;
+	}
+
+	public void setProductType(String productType) {
+		this.productType = productType;
+	}
 
 }
